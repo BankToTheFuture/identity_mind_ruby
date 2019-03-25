@@ -3,7 +3,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'identity_mind/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'identity_mind'
+  spec.name          = 'identity-mind'
   spec.version       = IdentityMind::VERSION
   spec.authors       = ['Wojciech Widenka']
   spec.email         = ['wojtek@codegarden.online']
