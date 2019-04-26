@@ -10,7 +10,7 @@ module IdentityMind
       end
 
       def create(params)
-        new(IdentityMind.post(path, body: params.to_json).body)
+        new(IdentityMind.post(path, body: Params[params].to_json).body)
       end
 
       def fetch(transaction_id)

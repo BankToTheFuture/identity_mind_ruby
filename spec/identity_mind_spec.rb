@@ -5,9 +5,16 @@ RSpec.describe IdentityMind do
   end
 
   describe 'configuration' do
-    it 'has default api configuration' do
-      expect(described_class.configuration.base_uri)
-        .to eq('https://edna.identitymind.com')
+    describe 'defaults' do
+      it 'has default base_uri' do
+        expect(described_class.configuration.base_uri)
+          .to eq('https://edna.identitymind.com')
+      end
+
+      it 'has default param_length_limit' do
+        expect(described_class.configuration.param_length_limit)
+          .to eq(128)
+      end
     end
 
     context 'when configuration is performed' do
@@ -20,8 +27,7 @@ RSpec.describe IdentityMind do
       end
 
       after do
-        # clean configuration
-        described_class.send(:instance_variable_set, '@configuration', nil)
+        described_class.load_default_configuration
       end
 
       it 'has base_uri assigned' do

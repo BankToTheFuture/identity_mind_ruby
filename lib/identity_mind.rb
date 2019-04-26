@@ -1,6 +1,7 @@
 require 'ostruct'
 require 'httparty'
 require 'identity_mind/version'
+require 'identity_mind/params'
 require 'identity_mind/response_error'
 require 'identity_mind/entity'
 require 'identity_mind/account'
@@ -27,6 +28,14 @@ module IdentityMind
       true
     end
 
+    def load_default_configuration
+      @configuration = nil
+      configure do |config|
+        config.base_uri = 'https://edna.identitymind.com'
+        config.param_length_limit = 128
+      end
+    end
+
     def perform_request(http_method, path, options, &block)
       result = super
       return result if result.success?
@@ -35,7 +44,5 @@ module IdentityMind
     end
   end
 
-  configure do |config|
-    config.base_uri = 'https://edna.identitymind.com'
-  end
+  load_default_configuration
 end

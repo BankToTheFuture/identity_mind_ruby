@@ -31,6 +31,23 @@ RSpec.describe IdentityMind::Entity do
       expect(described_class.create(some: :params).to_h)
         .to eq(json: ['response'])
     end
+
+    context 'when param value is too long' do
+      before do
+        IdentityMind.configure { |config| config.param_length_limit = 5 }
+      end
+
+      after do
+        IdentityMind.load_default_configuration
+      end
+
+      it 'it cuts value in after 128 chars' do
+        described_class.create(long_param: 'lorem ipsum')
+        expect(IdentityMind)
+          .to have_received(:post)
+          .with('/im/entity', body: '{"long_param":"lorem"}')
+      end
+    end
   end
 
   describe '#fetch' do
