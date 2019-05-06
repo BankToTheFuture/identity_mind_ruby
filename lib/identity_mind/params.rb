@@ -49,7 +49,13 @@ module IdentityMind
       value = value.to_s if value.is_a?(Symbol)
       return value unless value.is_a?(String)
 
-      value[0, IdentityMind.configuration.param_length_limit]
+      result = value[0, IdentityMind.configuration.param_length_limit]
+
+      while result.bytesize > IdentityMind.configuration.param_length_limit
+        result = result[0...-1]
+      end
+
+      result
     end
   end
 end

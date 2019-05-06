@@ -36,6 +36,14 @@ RSpec.describe IdentityMind::Params do
     expect(described_class.new(some: 'long value').some).to eq('long v')
   end
 
+  it 'trims too long value in bytesize on initialization' do
+    # '汉字汉字'.size => 4
+    # '汉字汉字'.bytesize => 12
+    # '汉字'.bytesize => 6
+
+    expect(described_class.new(some: '汉字汉字').some).to eq('汉字')
+  end
+
   it 'trims too long value on assignment via attribute name method' do
     params = described_class.new
     params.some = :long_value

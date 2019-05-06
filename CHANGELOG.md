@@ -1,3 +1,6 @@
+# master
+- Cut param value by bytesize
+
 # 0.2.0
 - Introduce Params class with trimmed values
 
