@@ -1,3 +1,6 @@
+# master
+- Trim parameters base on params_length_limit.yml
+
 # 0.2.1
 - Cut param value by bytesize
 

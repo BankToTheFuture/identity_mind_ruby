@@ -44,6 +44,17 @@ RSpec.describe IdentityMind::Params do
     expect(described_class.new(some: '汉字汉字').some).to eq('汉字')
   end
 
+  context 'params length limit' do
+    before do
+      IdentityMind.load_default_configuration
+    end
+
+    it 'trims value when specified in params_length_limits.yml' do
+      expect(described_class.new(bz: '123456789012345678901234567890').bz)
+        .to eq('12345678901234567890')
+    end
+  end
+
   it 'trims too long value on assignment via attribute name method' do
     params = described_class.new
     params.some = :long_value
