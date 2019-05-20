@@ -1,3 +1,6 @@
+# master
+- Add az to limited length params
+
 # 0.2.3
 - Trim parameters base on params_length_limit.yml
 
