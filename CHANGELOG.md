@@ -1,4 +1,4 @@
-# master
+# 0.2.4
 - Add az to limited length params
 
 # 0.2.3
