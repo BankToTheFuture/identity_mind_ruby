@@ -1,3 +1,6 @@
+# 0.2.5
+- Added KYC Consumer integration
+
 # 0.2.4
 - Add az to limited length params
 
